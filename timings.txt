@@ -1,0 +1,20 @@
+LOC:
+Generating all possible placements of Y: 40
+Solve with Native Clojure Backtracking: 28
+Solve with Dancing Links: 2
+
+Size 10, 350 solutions
+Dancing Links
+	Time to find 1: 9ms
+	Time to find all (350): 43ms
+Native Clojure Backtracking
+	Time to find 1: 38ms
+	Time to find all: 14s
+
+Size 15, 1696 solutions
+Dancing Links
+	Time to find 1: 21s
+	Time to find all: 611.6s
+Native Clojure Backtracking
+	Time to find 1: 749s
+

@@ -1,9 +1,5 @@
-(ns ycover.core
-  (:refer-clojure :exclude [cond when-let if-let])
-  (:require [better-cond.core :refer :all]
-            [tarantella.core :refer [dancing-links]]))
+(ns ycover.core)
 
-(def board-size 15)
 (def Y #{[0 0] [0 1] [0 2] [0 3] [1 2]})
 
 (defn count-rows [coords]
@@ -33,7 +29,7 @@
 
 (def all-symmetries-of-Y ((apply juxt all-symmetries) Y))
 
-(def all-possible-Y-placements
+(defn all-possible-Y-placements [board-size]
   (for [coords all-symmetries-of-Y,
         :let [num-rows (count-rows coords)
               num-cols (count-cols coords)]
@@ -42,6 +38,6 @@
     (set (for [[r c] coords]
            [(+ r row-offset) (+ c col-offset)]))))
 
-(def Y-matrix (zipmap all-possible-Y-placements all-possible-Y-placements))
-
+(def all-possible-Y-placements-10 (all-possible-Y-placements 10))
+(def all-possible-Y-placements-15 (all-possible-Y-placements 15))
 
