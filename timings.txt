@@ -14,6 +14,9 @@ Native Clojure Backtracking
 SAT
 	Time to find 1: 6ms
 	Time to find all: 472ms
+Loco
+	Time to find 1: 12.8s
+	Time to find all: 211.8s
 
 Size 15, 1696 solutions
 Dancing Links
@@ -25,10 +28,13 @@ Native Clojure Backtracking
 SAT
 	Time to find 1: 8.2s
 	Time to find all: 7331s
-	
+
 VARIATIONS
 SAT
 	10x10 rotationally symmetric solution
 		Time to find 1: 20ms
 		Time to find all: 92ms
+Loco
+	10x10 three-colorable solution
+		Time to find 1: 525s		
 
