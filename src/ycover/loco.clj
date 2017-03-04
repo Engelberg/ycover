@@ -25,6 +25,8 @@
                  (map #(nth (key %) 1)))
         (loco/solution model)))
 
+; (solve-model model-10)
+
 (defn one-away [[row col]]
   #{[(inc row) col] [(dec row) col] [row (inc col)] [row (dec col)]})
 
