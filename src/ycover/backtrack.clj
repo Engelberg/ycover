@@ -1,12 +1,12 @@
 (ns ycover.backtrack
   (:refer-clojure :exclude [cond])
   (:require [better-cond.core :refer [cond]]
-            [clojure.set :refer [intersection]]
-            [ycover.core :refer [board-size all-possible-Y-placements]]))
+            [clojure.set :refer [intersection union]]
+            [ycover.core :refer [all-possible-Y-placements]]))
 
 (defn group-by-cell [placements]
   (into {}
-    (for [row (range board-size), col (range board-size)
+    (for [[row col] (apply union placements)
           :let [cell [row col]]]
       [cell (for [placement placements
                   :when (contains? placement cell)]
@@ -29,7 +29,9 @@
                 solution (all-solutions (remove-placement-from-groups placement groups))]
             (cons placement solution))))
 
-(def Y-groups (group-by-cell all-possible-Y-placements))
+(defn Y-groups [board-size] (group-by-cell (all-possible-Y-placements board-size)))
+(def Y-groups-10 (Y-groups 10))
+(def Y-groups-15 (Y-groups 15))
 
-; (time (first (all-solutions Y-groups))) 38ms
-; (time (count (all-solutions Y-groups))) 14s
+; (time (first (all-solutions Y-groups-10))) 38ms
+; (time (count (all-solutions Y-groups-10))) 14s

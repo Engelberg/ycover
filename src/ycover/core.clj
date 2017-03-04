@@ -1,4 +1,6 @@
-(ns ycover.core)
+(ns ycover.core
+  (:refer-clojure :exclude [cond])
+  (:require [better-cond.core :refer [cond]]))
 
 (def Y #{[0 0] [0 1] [0 2] [0 3] [1 2]})
 
