@@ -8,17 +8,25 @@
   (into {}
     (for [[row col] (apply union placements)
           :let [cell [row col]]]
-      [cell (for [placement placements
-                  :when (contains? placement cell)]
-              placement)])))
+      [cell (set (for [placement placements
+                       :when (contains? placement cell)]
+                   placement))])))
 
-(defn remove-placement-from-groups [placement groups]
-  (into {}
-    (for [[cell group] groups
-          :when (not (contains? placement cell))]
-      [cell (for [p group
-                  :when (zero? (count (intersection placement p)))]
-              p)])))
+(defn remove-placement-from-groups
+  [placement groups]
+  (as-> groups groups
+    (reduce
+      (fn [groups invalid-placement]
+        (reduce
+          (fn [groups related-cell]
+            (update groups related-cell disj invalid-placement))
+          groups
+          invalid-placement))
+      groups
+      (for [cell placement
+            invalid-placement (groups cell)]
+        invalid-placement))
+    (reduce dissoc groups placement)))
 
 (defn all-solutions [groups]
   (cond
