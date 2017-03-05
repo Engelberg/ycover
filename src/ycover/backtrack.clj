@@ -41,5 +41,5 @@
 (def Y-groups-10 (Y-groups 10))
 (def Y-groups-15 (Y-groups 15))
 
-; (time (first (all-solutions Y-groups-10))) 38ms
-; (time (count (all-solutions Y-groups-10))) 14s
+; (time (first (all-solutions Y-groups-10))) 15ms
+; (time (count (all-solutions Y-groups-10))) 3.2s
