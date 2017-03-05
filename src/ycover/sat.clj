@@ -3,7 +3,8 @@
     (:require [better-cond.core :refer [cond]]
               [clojure.set :refer [union]]
               [ycover.core :refer [all-possible-Y-placements all-possible-Y-placements-10 all-possible-Y-placements-15]]
-              [rolling-stones.core :as sat :refer [! NOT AND OR XOR IFF IMP NOR NAND at-least at-most exactly]]))
+              [rolling-stones.core :as sat :refer [! NOT AND OR XOR IFF IMP NOR NAND at-least at-most exactly]]
+              [ycover.viz :as viz]))
 
 (defn build-constraints [placements]
   (for [[row col] (apply union placements)
@@ -31,7 +32,7 @@
                        :when (contains? placement cell)]
                    placement)))))
 
-;(sat/true-symbolic-variables (sat/solve-symbolic-formula (build-constraints-double-cell (all-possible-Y-placements 4) #{[0 0] [3 3] [0 3] [3 0]})))
+;(sat/true-symbolic-variables (sat/solve-symbolic-formula (build-constraints-double-cell (all-possible-Y-placements 14) #{[0 0] [3 3] [0 3] [3 0]})))
 
 ;; Exploring symmetries
 
@@ -52,8 +53,8 @@
 ;(time (sat/true-symbolic-variables (sat/solve-symbolic-formula symmetric-Y-constraints-10)))
 ;(time (count (sat/solutions-symbolic-formula symmetric-Y-constraints-10)))
 
-(defn enforce-two-symmetries [placements board-size]
+(defn enforce-ten-symmetries [placements board-size]
   [(exactly 10 (for [placement placements]
-                 (AND placement (IFF placement (reflect-piece placement board-size)))))])
-(def two-symmetric-Y-constraints-10 (concat Y-constraints-10 (enforce-two-symmetries all-possible-Y-placements-10 10)))
-(def two-symmetric-Y-constraints-15 (concat Y-constraints-15 (enforce-two-symmetries all-possible-Y-placements-15 15)))
+                 (AND placement (reflect-piece placement board-size))))])
+(def ten-symmetric-Y-constraints-10 (concat Y-constraints-10 (enforce-ten-symmetries all-possible-Y-placements-10 10)))
+(def ten-symmetric-Y-constraints-15 (concat Y-constraints-15 (enforce-ten-symmetries all-possible-Y-placements-15 15)))

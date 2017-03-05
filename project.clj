@@ -7,6 +7,7 @@
                  [rolling-stones "1.0.0-SNAPSHOT"]
                  [tarantella "1.0.0-SNAPSHOT"]
                  [loco "0.3.1"]
-                 [better-cond "1.0.1"]
+                 [better-cond "2.0.0-SNAPSHOT"]
+                 [tikkba "0.6.0"]
                  [medley "0.8.4"]]
   :jvm-opts ^:replace ["-Xmx1g" "-server"])
