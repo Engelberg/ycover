@@ -28,6 +28,25 @@
         invalid-placement))
     (reduce dissoc groups placement)))
 
+(defn remove-placement-from-groups
+  "Second version with transients"
+  [placement groups]
+  (as-> groups groups
+    (transient groups)
+    (reduce
+      (fn [groups invalid-placement]
+        (reduce
+          (fn [groups related-cell]
+            (assoc! groups related-cell (disj (get groups related-cell) invalid-placement)))
+          groups
+          invalid-placement))
+      groups
+      (for [cell placement
+            invalid-placement (groups cell)]
+        invalid-placement))
+    (reduce dissoc! groups placement)
+    (persistent! groups)))
+
 (defn all-solutions [groups]
   (cond
     (empty? groups) [[]]
