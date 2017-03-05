@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [cond])
   (:require [better-cond.core :refer [cond]]
             [clojure.set :refer [union intersection]]
-            [ycover.core :refer [all-possible-Y-placements all-possible-Y-placements-10 all-possible-Y-placements-15]]
+            [ycover.core :refer [all-possible-Y-placements all-possible-Y-placements-10 all-possible-Y-placements-15 print-solution]]
             [loco.core :as loco]
             [loco.constraints :refer :all]))
 

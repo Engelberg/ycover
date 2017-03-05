@@ -43,3 +43,17 @@
 (def all-possible-Y-placements-10 (all-possible-Y-placements 10))
 (def all-possible-Y-placements-15 (all-possible-Y-placements 15))
 
+(defn print-solution
+  [placements]
+  (when placements
+    (let [num-rows (inc (apply max (mapcat (partial map first) placements)))
+          num-cols (inc (apply max (mapcat (partial map second) placements)))
+          placement-ids (seq "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+          cell->placement-id
+          (apply merge (for [[placement letter] (map vector placements placement-ids)
+                             cell placement]
+                         {cell letter}))]
+      (doseq [i (range num-rows)]
+        (doseq [j (range num-cols)]
+          (print (str (cell->placement-id [i j]) " ")))
+        (println)))))

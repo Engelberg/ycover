@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [cond])
   (:require [better-cond.core :refer [cond]]
             [clojure.set :refer [intersection union]]
-            [ycover.core :refer [all-possible-Y-placements]]))
+            [ycover.core :refer [all-possible-Y-placements print-solution]]))
 
 (defn group-by-cell [placements]
   (into {}
