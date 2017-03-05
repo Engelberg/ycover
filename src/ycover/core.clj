@@ -55,5 +55,6 @@
                          {cell letter}))]
       (doseq [i (range num-rows)]
         (doseq [j (range num-cols)]
-          (print (str (cell->placement-id [i j]) " ")))
-        (println)))))
+          (print (str (cell->placement-id [i j] " ") " ")))
+        (println))
+      (println))))
