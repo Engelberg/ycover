@@ -3,6 +3,7 @@ Generating all possible placements of Y: 40
 Solve with Native Clojure Backtracking: 28
 Solve with Dancing Links: 2
 Solve with SAT: 8
+Solve with Loco: 16
 
 Size 10, 350 solutions
 Dancing Links
@@ -31,10 +32,17 @@ SAT
 
 VARIATIONS
 SAT
-	10x10 rotationally symmetric solution
+	10x10 rotationally symmetric solution  (34 solutions)
 		Time to find 1: 20ms
 		Time to find all: 92ms
+	14x14 double cells at [0 0], [0 3], [3 0], [3 3] (1016 solutions)
+		Time to find 1: 443ms
+		Time to find all: 22.2s
+	10x10 10 out of 20 pieces reflected  (8 solutions)
+		Time to find 1: 133ms
+		Time to find all: 251ms
 Loco
 	10x10 three-colorable solution
-		Time to find 1: 525s		
-
+		Time to find 1: 525s
+	10x10 maximizing uprights solution
+		Time to find:	225s
