@@ -8,3 +8,10 @@
 ;(time (dancing-links Y-matrix-10 :limit 1))
 ;(time (count (dancing-links Y-matrix-10)))
 
+;(dancing-links
+;  [[0 0 1 0 1 1 0]
+;   [1 0 0 1 0 0 1]
+;   [0 1 1 0 0 1 0]
+;   [1 0 0 1 0 0 0]
+;   [0 1 0 0 0 0 1]
+;   [0 0 0 1 1 0 1]])

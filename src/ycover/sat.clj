@@ -58,3 +58,25 @@
                  (AND placement (reflect-piece placement board-size))))])
 (def ten-symmetric-Y-constraints-10 (concat Y-constraints-10 (enforce-ten-symmetries all-possible-Y-placements-10 10)))
 (def ten-symmetric-Y-constraints-15 (concat Y-constraints-15 (enforce-ten-symmetries all-possible-Y-placements-15 15)))
+
+
+;; Examples for slides
+;(rolling-stones.core/solve-symbolic-formula
+;  (AND (OR :p :q :r :s)
+;     (OR (NOT :p) :r (NOT :s))
+;     (OR (NOT :q) (NOT :s))
+;     (OR :q (NOT :r) :s)))
+;
+;(rolling-stones.core/solutions-symbolic-formula
+;  (AND (OR :p :q :r :s)
+;     (OR (NOT :p) :r (NOT :s))
+;     (OR (NOT :q) (NOT :s))
+;     (OR :q (NOT :r) :s)))
+;
+;(defn Exactly [n vars]
+;  (let [diff (- (count vars) n)]
+;    (concat
+;      (for [var-comb (c/combinations vars (inc n))]
+;        (with-meta (vec (for [var var-comb] (! var))) {:clause :exactly}))
+;      (for [var-comb (c/combinations vars (inc diff))]
+;        (with-meta (vec (for [var var-comb] var)) {:clause :exactly})))))
